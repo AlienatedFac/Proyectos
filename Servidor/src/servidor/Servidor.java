@@ -12,6 +12,7 @@ package servidor;
 import java.io.* ;
 import java.net.* ;
 class Servidor {
+    static final String HOST = "localhost";
 static final int PUERTO=5000;
 int x, y, sum;
 String a, b;//puerto de comunicacion
@@ -43,12 +44,13 @@ public Servidor( ) {
                         DataOutputStream dos= new DataOutputStream(os);
                         dos.writeUTF("La suma total es;  "+sum);
                         
-                        Socket sc1=new Socket("localhost", 5000);
+                        miCliente.close();
+                      Socket miClient = new Socket( HOST , PUERTO );
+                          Socket sc1=new Socket("localhost", 5000);
                         OutputStream os1=sc1.getOutputStream();
                        DataOutputStream dos1=new DataOutputStream(os1);
                         dos1.writeUTF((""+sum));
-        
-                        miCliente.close();
+                        miClient.close();
                         
 		}
 			System.out.println("Demasiados clientes por hoy");

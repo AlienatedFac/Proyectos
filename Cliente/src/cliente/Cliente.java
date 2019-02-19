@@ -42,21 +42,21 @@ public class Cliente {
         System.out.println(dis.readUTF());
         
         
-        
+         ServerSocket miClient = new ServerSocket(PUERTO);
 	InputStream aux = miCliente.getInputStream();
 	DataInputStream flujo = new DataInputStream( aux );
+           System.out.println("El resultado es: ");
 	System.out.println( flujo.readUTF() );
-     ServerSocket miClient = new ServerSocket(PUERTO);
-        System.out.println("El resultado es: ");
         Socket miServidor = miClient.accept(); // Crea objeto
-		
+	miCliente.close();
+System.out.println("Iniciando el puerto " + PUERTO );
 			Socket sl=miClient.accept();
                         InputStream xd=sl.getInputStream();
                         DataInputStream diso=new DataInputStream(xd);
                         a=diso.readUTF();
                         System.out.println(a);
         
-	miCliente.close();
+	
 	} catch( Exception e ) {
 	System.out.println( e.getMessage() );
 	}
